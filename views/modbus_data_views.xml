@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_modbus_data_list" model="ir.ui.view">
+        <field name="name">modbus.data.list</field>
+        <field name="model">modbus.data</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="device_id"/>
+                <field name="timestamp"/>
+                <field name="register_number"/>
+                <field name="value"/>
+                <field name="error"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_modbus_data_form" model="ir.ui.view">
+        <field name="name">modbus.data.form</field>
+        <field name="model">modbus.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="device_id"/>
+                            <field name="timestamp"/>
+                            <field name="register_number"/>
+                        </group>
+                        <group>
+                            <field name="value"/>
+                            <field name="error"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_modbus_data" model="ir.actions.act_window">
+        <field name="name">Modbus Data</field>
+        <field name="res_model">modbus.data</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_modbus_data_list')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_modbus_data_form')})]"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_modbus_root" name="Modbus Connector" sequence="10"/>
+    <menuitem id="menu_modbus_data"
+              name="Historical Data"
+              parent="menu_modbus_root"
+              action="action_modbus_data"
+              sequence="20"/>
+
+    <!-- Scheduled Action -->
+    <record id="ir_cron_fetch_modbus_data" model="ir.cron">
+        <field name="name">Modbus: Fetch Data</field>
+        <field name="model_id" ref="model_modbus_data"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_fetch_modbus_data()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="nextcall" eval="(DateTime.now() + timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

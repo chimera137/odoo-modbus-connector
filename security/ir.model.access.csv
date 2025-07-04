@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_modbus_data_user,modbus.data.user,model_modbus_data,base.group_user,1,0,0,0
+access_modbus_data_manager,modbus.data.manager,model_modbus_data,base.group_system,1,1,1,1
+access_modbus_device_user,modbus.device.user,model_modbus_device,base.group_user,1,0,0,0
+access_modbus_device_manager,modbus.device.manager,model_modbus_device,base.group_system,1,1,1,1

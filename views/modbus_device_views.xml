@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_modbus_device_list" model="ir.ui.view">
+        <field name="name">modbus.device.list</field>
+        <field name="model">modbus.device</field>
+        <field name="arch" type="xml">
+            <list string="Modbus Devices">
+                <field name="name"/>
+                <field name="plc_ip"/>
+                <field name="plc_port"/>
+                <field name="slave_id"/>
+                <field name="status"/>
+                <field name="last_values"/>
+                <field name="last_error"/>
+                <field name="data_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_modbus_device_form" model="ir.ui.view">
+        <field name="name">modbus.device.form</field>
+        <field name="model">modbus.device</field>
+        <field name="arch" type="xml">
+            <form string="Modbus Device">
+                <header>
+                    <button name="test_connection" string="Test Connection" type="object" class="oe_highlight"/>
+                    <button name="fetch_data" string="Fetch Data" type="object" class="btn-primary"/>
+                    <button name="action_clear_historical_data" string="Clear Historical Data" type="object" class="btn-secondary"/>
+                    <button name="action_start_polling" string="Start Auto Polling" type="object" class="btn-success"/>
+                    <button name="action_stop_polling" string="Stop Auto Polling" type="object" class="btn-danger"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="plc_ip"/>
+                            <field name="plc_port"/>
+                            <field name="slave_id"/>
+                        </group>
+                        <group>
+                            <field name="polling_interval"/>
+                            <field name="starting_register"/>
+                            <field name="number_of_registers"/>
+                            <field name="api_port"/>
+                            <field name="api_url"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="status"/>
+                            <field name="last_values"/>
+                            <field name="last_error"/>
+                        </group>
+                        <group>
+                            <field name="data_count"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_modbus_device" model="ir.actions.act_window">
+        <field name="name">Modbus Devices</field>
+        <field name="res_model">modbus.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_modbus_root" name="Modbus Connector" sequence="10"/>
+    <menuitem id="menu_modbus_device" name="Devices" parent="menu_modbus_root" action="action_modbus_device" sequence="10"/>
+</odoo> 

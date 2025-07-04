@@ -1,0 +1,14 @@
+{
+  "name": "modbus-connector",
+  "version": "1.0.0",
+  "description": "Modbus TCP connector with REST API",
+  "main": "modbusapi.js",
+  "scripts": {
+    "start": "node modbusapi.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "modbus-serial": "^8.0.18",
+    "dotenv": "^16.3.1"
+  }
+}

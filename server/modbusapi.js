@@ -46,14 +46,6 @@ const closePlcConnection = async (ip, port, slaveId) => {
     }
 };
 
-// This will store the latest read values (kept for /config status, but not updated by polling)
-let latestModbusData = {
-    values: [],
-    timestamp: null,
-    error: null,
-    connectionStatus: 'disconnected'
-};
-
 // REST API endpoints
 app.post("/data", async (req, res) => {
     const { ip, port, slaveId, startingRegister, numberOfRegisters } = req.body;
@@ -110,7 +102,5 @@ app.post("/data", async (req, res) => {
 app.listen(port, () => {
     console.log(`🌐 REST API running at http://host.docker.internal:${port}`);
     console.log(`📝 Data endpoint: POST http://host.docker.internal:${port}/data (requires config in body)`);
-    console.log(`📝 Config endpoint: GET/POST http://host.docker.internal:${port}/config`); // unused in this version
     console.log("API server is ready to receive data requests with device configurations.");
-
 });

@@ -55,16 +55,4 @@
               parent="menu_modbus_root"
               action="action_modbus_data"
               sequence="20"/>
-
-    <!-- Scheduled Action -->
-    <record id="ir_cron_fetch_modbus_data" model="ir.cron">
-        <field name="name">Modbus: Fetch Data</field>
-        <field name="model_id" ref="model_modbus_data"/>
-        <field name="state">code</field>
-        <field name="code">model._cron_fetch_modbus_data()</field>
-        <field name="interval_number">5</field>
-        <field name="interval_type">minutes</field>
-        <field name="nextcall" eval="(DateTime.now() + timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
-        <field name="active" eval="True"/>
-    </record>
 </odoo>

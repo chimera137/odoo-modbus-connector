@@ -2,7 +2,7 @@
 Odoo Module for Connecting Modbus Devices
 
 ## Overview
-This repository contains the modbus_connector module, a custom Odoo ERP add-on designed to facilitate direct and configurable communication with Modbus TCP/IP devices. It serves as a foundational component for integrating shop-floor Modbus-enabled hardware with Odoo's business applications, enabling real-time data acquisition from industrial machinery.
+This repository contains the `odoo-modbus-connector` module, a custom Odoo ERP add-on designed to facilitate direct and configurable communication with Modbus TCP/IP devices. It serves as a foundational component for integrating shop-floor Modbus-enabled hardware with Odoo's business applications, enabling real-time data acquisition from industrial machinery.
 This is a Third Party Module for Odoo ERP
 
 ## Features
@@ -11,7 +11,7 @@ This is a Third Party Module for Odoo ERP
 - **Automated Polling**: Implements automatic data polling with a configurable minimum interval of 1000ms (1 second) to ensure near real-time data synchronization.
 
 ## System Architecture Context
-This modbus_connector module is a vital part of a larger multi-vendor PLC integration system for Odoo ERP. It functions as one of the specialized connectors, working in conjunction with a dedicated Node.js-based REST API server that handles the direct Modbus communication.
+This `odoo-modbus-connector` module is a vital part of a larger multi-vendor PLC integration system for Odoo ERP. It functions as one of the specialized connectors, working in conjunction with a dedicated Node.js-based REST API server that handles the direct Modbus communication.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ This modbus_connector module is a vital part of a larger multi-vendor PLC integr
 1. **Clone this repository:**
 `git clone https://github.com/chimera137/odoo-modbus-connector.git`
 
-2. **Place the module:** Copy the modbus_connector folder into your Odoo custom add-ons path (e.g., /path/to/odoo/addons/)
+2. **Place the module:** Copy the `odoo-modbus-connector` folder into your Odoo custom add-ons path (e.g., /path/to/odoo/addons/)
 
 3. **Update and Install in Odoo:**
     - Restart your Odoo service.

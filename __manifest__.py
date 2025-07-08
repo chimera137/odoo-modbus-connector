@@ -19,7 +19,6 @@
         'security/ir.model.access.csv',
         'views/modbus_device_views.xml',
         'views/modbus_data_views.xml',
-        'data/cron.xml',
     ],
     'external_dependencies': {
         'python': ['requests'],
